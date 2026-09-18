@@ -1,32 +1,100 @@
-# React + TypeScript + Vite
+# AUREN — Technology & Solutions
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Frontend foundation v1.0.0.
 
-Currently, two official plugins are available:
+This repository is the base for the AUREN corporate platform, with room to evolve into products, solutions, projects, professionals and a specialized technology marketplace.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Stack
 
-## React Compiler
+- React 19 + TypeScript 6
+- Vite 8
+- React Router 8 (Data Mode)
+- TanStack Query for server state
+- React Hook Form + Zod for typed forms
+- Anime.js 4 for complex motion orchestration
+- CSS / Web APIs for simple motion
+- Lucide React for interface icons
+- Self-hosted Inter and Sora via Fontsource
+- Vitest + Testing Library for unit/integration tests
+- Playwright for E2E tests
+- ESLint 10 + ESLint React + typescript-eslint + Prettier
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Project layout
 
-## Expanding the Oxlint configuration
+```text
+src/
+├── app/              # router, providers, application-level boundaries
+├── assets/           # product and brand assets
+├── animations/       # reusable motion orchestration
+├── components/       # reusable UI and domain components
+├── data/             # local mock/static data
+├── hooks/            # reusable React hooks
+├── lib/              # low-level utilities and configuration
+├── pages/            # route-level screens
+├── sections/         # composed page sections
+├── services/         # API/data access boundary
+├── styles/           # tokens and global styles
+├── test/             # test setup
+└── types/            # shared domain types
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+tests/e2e/             # Playwright E2E suite
+docs/                  # architecture and workflow notes
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Install
+
+Use Node.js 24.x. The project is tested against the modern Node line required by the current frontend tooling.
+
+```bash
+npm install
+npm run dev
+```
+
+Open `http://localhost:5173`.
+
+## Quality gates
+
+```bash
+npm run lint
+npm run typecheck
+npm run test:run
+npm run build
+```
+
+Or run the standard gate in one command:
+
+```bash
+npm run verify
+```
+
+## E2E
+
+Install the Chromium runtime once:
+
+```bash
+npm run e2e:install
+```
+
+Then:
+
+```bash
+npm run e2e
+```
+
+## Git workflow
+
+Every meaningful unit of work should be validated before commit. Prefer small, focused commits.
+
+```bash
+git status
+npm run verify
+git add .
+git commit -m "feat: describe the change"
+git push
+```
+
+Do not use `npm install --force` or `npm install --legacy-peer-deps` to hide dependency conflicts.
+
+## Brand
+
+The repository contains placeholder SVG brand assets for the technical shell. The approved AUREN identity assets supplied by the team should replace those files in `public/brand/` without changing the React component API.
